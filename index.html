@@ -97,10 +97,21 @@
 					<textarea data-template>
 
 						# OWASP
-
 						<img data-src="images/owasp.png">
 
-						TODO
+
+						## What is OWASP?
+						<ul>
+							<li class="fragment fade-in"><b>O</b>pen <b>W</b>eb <b>A</b>pplication <b>S</b>ecurity<b> P</b>roject</li>
+							<li class="fragment fade-in">Worldwide non-profit charitable organization</li>
+							<li class="fragment fade-in"><b>Purpose</b>: improving the security of software</li>
+						</ul>
+
+
+						## OWASP Top 10
+						<p>Most Critical Web Application Security Risks</p>
+						<img class="fragment fade-in" data-src="images/arrow6.png" style="width:6.9%">
+						<img data-src="images/owasp_top10.png" style="width:43%">
 					</textarea>
 					
 				</section>
@@ -120,7 +131,7 @@
 						<ul>
 							<li class="fragment fade-in">Intentionally insecure web application</li>
 							<li class="fragment fade-in">Developed for security training</li>
-							<li class="fragment fade-in">Includes all Web Application Security Risks from OWASP Top 10</li>
+							<li class="fragment fade-in">Includes all Web Application Security Risks from <b>OWASP Top 10</b></li>
 						</ul>
 
 
@@ -128,8 +139,8 @@
 						<img data-src="images/juiceshop_arc.png">
 						<ul>
 							<li class="fragment fade-in">JavaScript Application</li>
-							<li class="fragment fade-in">Written in Node.js, Express and Angular</li>
-							<li class="fragment fade-in">SQLite as database</li>
+							<li class="fragment fade-in">Written in <b>Node.js</b>, <b>Express</b> and <b>Angular</b></li>
+							<li class="fragment fade-in"><b>SQLite</b> as database</li>
 						</ul>
 
 
@@ -481,7 +492,73 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 						## Prevention
-						TODO
+						### Implement password validation
+						<p class="fragment fade-in">Do not allow registration with weak passwords</p>
+						<ul>
+							<li class="fragment fade-in">without defining a <b>minimum length</b></li>
+							<li class="fragment fade-in">without <b>uppercase</b></li>
+							<li class="fragment fade-in">without <b>digit</b> characters</li>
+							<li class="fragment fade-in">without <b>special</b> characters</li>
+						</ul>
+						<p class="fragment fade-in">Also, list <b>every</b> reason for validation failure</p>
+
+
+						## Prevention
+						### Prevent Brute-force attacks
+						<p class="fragment fade-in">Block user login after too many attempts</p>
+						<ul>
+							<li class="fragment fade-in">Lock the attacked user account</b></li>
+							<li class="fragment fade-in">Block the attacking IP address</li>
+						</ul>
+
+
+						## Prevention
+						### Use generic error messages</b>
+						<img data-src="images/wrong.png" style="width:17%">
+						<img data-src="images/brokenauth_login_wrong.png" style="width:37%"></br>
+						<img data-src="images/right.png" style="width:17%">
+						<img data-src="images/brokenauth_login_right.png" style="width:37%">
+
+
+						## Prevention
+						### Use multi-factor authentication
+						<img class="fragment fade-in" data-src="images/brokenauth_multifactor.png" style="width:70%">
+
+
+						## Prevention
+						### Implement a secure password reset mechanism
+						<ul>
+							<li class="fragment fade-in">Use at least <b>two different security questions</b></li>
+							<li class="fragment fade-in"><b>Lock the user account</b> if security questions are answered wrong several times</li>
+							<li class="fragment fade-in">Send the link for password resetting within an <b>email</b> or <b>SMS</b></li>
+						</ul>
+						
+
+						## Prevention
+						### Session Management
+						<p>Assign a generic identifier to the Session ID</p>
+						<img data-src="images/wrong.png" style="width:5%">
+						PHPSESSID</br>
+						<img data-src="images/right.png" style="width:5%">
+						id
+						<p class="fragment fade-in">Session ID might contain information about <b>used technologies</b> or <b>user accounts</b></p>
+
+
+						## Prevention
+						### Session Management
+						<p>Let <b>Web Application Frameworks</b> handle Session Management</p>
+						<img class="fragment fade-in" data-src="images/brokenauth_javaee.png" style="width:20%">
+						<img class="fragment fade-in" data-src="images/brokenauth_aspnet.png" style="width:20%">
+
+
+						## Prevention
+						### Session ID handling
+						<ul>
+							<li class="fragment fade-in">Session ID should at least have a length of <b>128 bits</b></li>
+							<li class="fragment fade-in">Don't pass Session ID in the <b>URL</b></li>
+							<li class="fragment fade-in">Use <b>HTTPS</b> and <b>TLS</b> for entire session to protect the Session ID</li>
+						</ul>
+						<img class="fragment fade-in" data-src="images/brokenauth_https.png" style="width:25%">
 
 
 						## Implementation in Spring Boot
