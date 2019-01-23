@@ -37,18 +37,15 @@
 
 					</textarea>
 				</section>
-				<section data-markdown
+<!--				<section data-markdown
 					 data-separator="^\n\n\n"
 				         data-separator-vertical="^\n\n"
 				         data-separator-notes="^Note:"
 				         data-charset="iso-8859-15">
 					<textarea data-template>
-						# Introduction
-
-						TODO
-
-					</textarea>
-				</section>
+<!--						# Introduction-->
+<!--					</textarea>-->
+<!--				</section>-->
 				<section data-markdown
 					 data-separator="^\n\n\n"
 				         data-separator-vertical="^\n\n"
@@ -62,7 +59,7 @@
 						2. Open Web Application Security Project (OWASP)
 						3. OWASP Juice Shop
 						4. Security Tools
-						5. Spring Boot
+						5. Spring Boot Application
 
 
 						# Overview
@@ -85,8 +82,14 @@
 					<textarea data-template>
 
 						# IT Security
+						<img data-src="images/itsec.jpg">
 
-						TODO
+
+						## Purpose
+						<ul>
+							<li class="fragment fade-in"><b>Confidentiality</b></li>
+							<li class="fragment fade-in"><b>Availability</b></li>
+							<li class="fragment fade-in"><b>Integrity</b></li>
 					</textarea>					
 				</section>
 				<section data-markdown
@@ -214,7 +217,7 @@
 						<img data-src="images/zap.png">
 						<ul>
 							<li class="fragment fade-in">Open Source Web Application Security Scanner</li>
-							<li class="fragment fade-in">Written in JavaScript</li>
+							<li class="fragment fade-in">Written in Java</li>
 							<li class="fragment fade-in">Available for Windows, Linux and Mac OS X</li>
 						</ul>
 
@@ -262,19 +265,32 @@
 				         data-charset="iso-8859-15">
 					<textarea data-template>
 
-						# Spring Boot
+						# Spring Boot Application
 						<img data-src="images/spring.png">
-						TODO
 
 
-						<img data-src="images/java.png" style="width:25%">
-						<ul>
-							<li class="fragment fade-in">Application framework for java platform</li>
-						</ul>
-
-
+						## Startpage
 						<img data-src="images/spring_home.png">
-						TODO
+
+
+						## User Search
+						<img data-src="images/sb_usersearch.png">
+
+
+						## User Info
+						<img data-src="images/sb_user_info.png">
+
+
+						## Administration Section
+						<img data-src="images/sb_admin.png">
+
+
+						## Login
+						<img data-src="images/sb_login.png">
+
+
+						## Registration
+						<img data-src="images/sb_register.png" style="width:65%">
 					</textarea>
 					
 				</section>
@@ -302,6 +318,14 @@
 						   <li class="fragment fade-up">Unauthorized users are able to take over the administration</li>
 						   <li class="fragment fade-up">Unauthorized users can obtain, manipulate or delete important and sensitive data</li>
 						</ul>
+
+
+						<h2 style="color:#ff0000">Challenge time</h2>
+
+						Browse to the [Github Repository](https://github.com/nt-ca-aqe/thesis-ahs/tree/master/Challenge%201:%20Broken%20Access%20Control) and solve the challenges in the <b>Broken Access Control</b> 						section.
+
+
+						## Prevention
 
 
 						## Access Control Models
@@ -347,15 +371,6 @@
 
 
 						## Attribute-based Access Control (ABAC)
-						TODO
-
-
-						<h2 style="color:#ff0000">Challenge time</h2>
-
-						Browse to the [Github Repository](https://github.com/nt-ca-aqe/thesis-ahs/tree/master/Challenge%201:%20Broken%20Access%20Control) and solve the challenges in the <b>Broken Access Control</b> 						section.
-
-
-						## Prevention
 						TODO
 
 
@@ -611,7 +626,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					<textarea data-template>
 
 						# Injection
-
 						<img data-src="images/injection1.jpg" style="width:45%">
 
 
@@ -627,6 +641,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 						## SQL Injection
+						  <pre><code>
+SELECT * FROM Users
+WHERE Username =usernameParameter
+AND Password =passwordParameter
+						  </code></pre>
+
+
+						  <pre><code>
+SELECT * FROM Users
+WHERE Username ='admin'
+AND Password ='example123'
+						  </code></pre>
+
+
+						  <pre><code>
+SELECT * FROM Users
+WHERE Username ='admin'
+AND Passwort ='example123'
+						  </code></pre>
 
 
 <!--						## NoSQL Injection  -->
@@ -693,8 +726,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 						## Escaping All User-Supplied Input
 						TODO
-
-
 					</textarea>
 					
 				</section>
@@ -709,11 +740,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 						## Issue
-						TODO
-
+						<p class="fragment fade-in">Missing encryption of senstive data</p>
+						<p class="fragment fade-in">Usage of weak key generation.</p>
+						<p class="fragment fade-in">Usage of weak password hashing storage techniques</p>
+						<p class="fragment fade-in">Usage of weak protocols</p>
+						
 
 						## Impact
-						TODO
+						<p class="fragment fade-in">Sensitive data is transmitted in clear text</p>
+						<p class="fragment fade-in">Attackers steal personal data, credit card numbers, keys, passwords etc.</p>
 
 
 						<h2 style="color:#ff0000">Challenge time</h2>
@@ -722,14 +757,35 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 						## Prevention
-						TODO
-						<img data-src="images/bcrypt.png">
+						Guideline for <b>user data protection:</b>
+						<ul>
+							<li class="fragment fade-in">Only store user data information <b>if necessary</b></li>
+							<li class="fragment fade-in">Encrypte user data with <b/>Advanced Encryption Standard (AES)</b></li>
+							<li class="fragment fade-in">Use <b>Secure Hash Algorithm (SHA)-256</b> as cryptographic hash function</li>
+							<li class="fragment fade-in">Use <b>crypt</b>, <b>Password-Based Key Derivation Function 2 (PBKDF2)</b>, <b>bcrypt</b> or <b>Argon 2</b> for password encryption</li>
+						</ul>
 
 
 						## Implementation in Spring Boot
-						<img data-src="images/spring_bcrypt.png">
-						TODO
-					</textarea>			
+						<p><b>Bcrypt</b> is used for password storage</p>
+							<img data-src="images/bcrypt.png">
+
+
+						<p>Method <b>passwordEncoder</b> is called while saving a new user in database</p>
+						  <pre><code>
+@Bean
+public PasswordEncoder passwordEncoder() {
+BCryptPasswordEncoder bCryptPasswordEncoder = new
+, →
+BCryptPasswordEncoder();
+return bCryptPasswordEncoder;
+}
+						  </code></pre>
+
+
+						<p>Database with user accounts and their passwords hashed with <b>bcrypt</b></p>
+							<img data-src="images/spring_bcrypt.png">
+					</textarea>
 				</section>
 				<section data-markdown
 					 data-separator="^\n\n\n"
@@ -737,16 +793,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				         data-separator-notes="^Note:"
 				         data-charset="iso-8859-15">
 					<textarea data-template>
-
 						# Cross-site scripting (XSS)
-
 						<img data-src="images/xss1.png" style="width:45%">
 
 
  	
 						## Issue
 						TODO
-
 
 						## Impact
 						TODO
@@ -778,20 +831,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					</textarea>
 					
 				</section>
-				<section data-markdown
+<!--				<section data-markdown
 					 data-separator="^\n\n\n"
 				         data-separator-vertical="^\n\n"
 				         data-separator-notes="^Note:"
 				         data-charset="iso-8859-15">
 					<textarea data-template>
 
-						# Conclusion
+<!--						# Conclusion-->
 
-						TODO
+<!--						TODO-->
 
-					</textarea>
+<!--					</textarea>-->
 					
-				</section>
+<!--				</section>-->
 				<section data-markdown
 					 data-separator="^\n\n\n"
 				         data-separator-vertical="^\n\n"

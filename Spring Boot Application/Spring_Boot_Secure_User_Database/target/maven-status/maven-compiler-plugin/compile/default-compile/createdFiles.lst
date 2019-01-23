@@ -1,0 +1,13 @@
+com/service/UserDetailsServiceImpl.class
+com/dao/UserRepository.class
+com/WebApplication.class
+com/dao/UserDAO.class
+com/configuration/AuthenticationEntryPointImpl.class
+com/configuration/WebConfiguration.class
+com/model/UserAccount.class
+com/controller/MainController.class
+com/service/UserService.class
+com/util/WebUtils.class
+com/configuration/WebSecurityConfig.class
+com/validator/UserAccountValidator.class
+com/model/UserAccountForm.class
